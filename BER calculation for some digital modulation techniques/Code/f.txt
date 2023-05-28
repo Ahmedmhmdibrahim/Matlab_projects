@@ -1,0 +1,16 @@
+First_bit = num2str(1);
+Second_bit = num2str(0);
+symbol = strcat(First_bit,Second_bit);
+
+
+for  i = 1:num_of_iterations
+    fprintf(' %d Finished \n',i);
+    BPSK_BER(i)   = BPSK(bit_stream,stream_length,Eb(i));    
+    QPSK_1_BER(i) = QPSK_1(bit_stream,stream_length,Eb(i));
+    QPSK_2_BER(i) = QPSK_2(bit_stream,stream_length,Eb(i));
+    PSK8_BER(i)   = PSK8(bit_stream,stream_length,Eb(i));
+    QAM16_BER(i)  = QAM16(bit_stream,stream_length,Eb(i));
+    QPSK_T(i)=0.5*erfc(sqrt(Eb(i)));
+    PSK8_T(i)=erfc(sqrt(Eb(i))*sin(pi/8))/3;
+    QAM_T(i) =1.5*erfc(sqrt(Eb(i)/2.5))/4;
+end
